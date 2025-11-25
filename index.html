@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>منصة المدرسة</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- شاشة تسجيل الدخول -->
+  <div id="login-screen" class="container">
+    <img src="https://i.postimg.cc/Vk1M5tR8/athad-altlab-20251124-192127-0000.png" alt="login" class="login-img">
+    <h2>تسجيل الدخول</h2>
+    <input id="code" type="text" placeholder="ادخل الكود">
+    <input id="password" type="password" placeholder="كلمة السر">
+    <button onclick="login()">دخول</button>
+  </div>
+
+  <!-- الشاشة الرئيسية -->
+  <div id="home-screen" class="container hidden">
+    <div class="top-row">
+      <h2 id="welcome-name">القائمة الرئيسية</h2>
+      <button class="logout-btn" onclick="logout()">تسجيل خروج</button>
+    </div>
+
+    <!-- خانة البحث للمشرف -->
+    <div id="admin-search" class="hidden admin-search">
+      <input id="student-search" type="text" placeholder="ابحث عن اسم الطالب" oninput="searchStudent()" />
+      <div id="search-results"></div>
+    </div>
+
+    <div class="menu-list">
+      <div class="menu-btn" onclick="openPage('وزارة')">موقع الوزارة</div>
+      <div class="menu-btn" onclick="openPage('مسابقات')">مسابقاتى المدرسية</div>
+      <div class="menu-btn" onclick="openPage('اراء')">قسم الآراء</div>
+      <div class="menu-btn" onclick="openPage('بوت')">بوت الدعم وجمع الآراء</div>
+      <div class="menu-btn" onclick="openPage('اعلانات')">الإعلانات المدرسية</div>
+      <div class="menu-btn" onclick="openPage('حالة')">حالة الحساب</div>
+      <div class="menu-btn" onclick="openPage('مبادرتنا')">المبادرات المدرسية</div>
+    </div>
+  </div>
+
+  <!-- شاشة عرض حساب الطالب / الحساب -->
+  <div id="account-screen" class="container hidden">
+    <h2 id="account-title">حالة الحساب</h2>
+    <div id="account-content"></div>
+    <button class="menu-btn" onclick="goHome()">رجوع للشاشة الرئيسية</button>
+  </div>
+
+  <!-- شاشة المبادرات: تظهر قائمة المبادرات ثم المقال -->
+  <div id="initiatives-screen" class="container hidden">
+    <h2 id="initiatives-header">المبادرات المدرسية</h2>
+    <div id="initiatives-list" class="initiatives-list"></div>
+
+    <!-- هنا يظهر نص المبادرة عند اختيارها -->
+    <div id="initiative-article" class="hidden">
+      <h3 id="initiative-title"></h3>
+      <div id="initiative-body" class="initiative-body"></div>
+      <div class="two-btns">
+        <button class="menu-btn" onclick="backToInitiatives()">رجوع للمبادرات</button>
+        <button class="menu-btn" onclick="openTelegram()">شارك برأيك</button>
+      </div>
+    </div>
+
+    <button class="menu-btn" onclick="goHome()">رجوع للشاشة الرئيسية</button>
+  </div>
+
+<script src="student-data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
